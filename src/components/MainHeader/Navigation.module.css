@@ -1,0 +1,17 @@
+.nav {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav button {
+  font: inherit;
+  background: white;
+  border: 1px solid white;
+  padding: 0.5rem 1.5rem;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.26);
+  border-radius: 20px;
+}
