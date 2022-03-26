@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { auth, onAuthStateChanged } from "./config/firebase-config";
+import { login, logout, selectUser } from "./store/user-slice";
+// components and pages
+import MainHeader from "./components/MainHeader/MainHeader";
+import HomePage from "./pages/HomePage";
+import AuthPage from "./pages/AuthPage";
+import ProfilePage from "./pages/ProfilePage";
+import Footer from "./components/Footer/Footer";
+
+import classes from "./App.module.css";
 
 function App() {
+  const dispatch = useDispatch();
+
+  // check if user is already authenticated
+  useEffect(() => {
+    onAuthStateChanged(auth, (userAuth) => {
+      if (userAuth) {
+        // user logged in, store current user in state
+        dispatch(
+          login({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            displayName: userAuth.displayName,
+          })
+        );
+      } else {
+        dispatch(logout());
+      }
+    });
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MainHeader />
+      <main className={classes["content-container"]}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }
