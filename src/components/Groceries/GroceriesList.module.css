@@ -1,0 +1,9 @@
+.groceries-list {
+  list-style: none;
+  padding: 0;
+}
+
+.groceries-list__fallback {
+  color: darkviolet;
+  text-align: center;
+}
