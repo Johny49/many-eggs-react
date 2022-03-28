@@ -33,7 +33,6 @@ const AuthForm = () => {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputref.current.value;
-    const enteredName = nameInputRef.current.value;
 
     // TODO: Add validation here
 
@@ -52,6 +51,7 @@ const AuthForm = () => {
           alert(error.message);
         });
     } else {
+      const enteredName = nameInputRef.current.value;
       // handle user signup
       createUserWithEmailAndPassword(
         auth,
