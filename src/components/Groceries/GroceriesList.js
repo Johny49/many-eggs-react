@@ -14,6 +14,7 @@ const GroceriesList = (props) => {
     <ul className={classes["groceries-list"]}>
       {props.items.map((grocery) => (
         <GroceryItem
+          id={grocery.id}
           title={grocery.title}
           quantity={grocery.quantity}
           key={grocery.id}

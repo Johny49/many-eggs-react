@@ -17,8 +17,11 @@ export const grocerySlice = createSlice({
     },
     addItemToList: (state, action) => {
       const newItem = action.payload;
-      const existingItem = state.items.find((item) => item.id === newItem.id);
+      const existingItem = state.items.find(
+        (item) => item.title === newItem.title
+      );
       state.changed = true;
+      // add to list if new
       if (!existingItem) {
         state.items.push({
           id: newItem.id,
@@ -27,10 +30,12 @@ export const grocerySlice = createSlice({
           isPurchased: newItem.isPurchased,
         });
       } else {
+        // update existing quantity
         existingItem.quantity = existingItem.quantity + newItem.quantity;
+        existingItem.isPurchased = false;
       }
     },
-    RemoveItemFromList: (state, action) => {
+    removeItemFromList: (state, action) => {
       const itemToRemove = action.payload;
       const existingItem = state.items.find(
         (item) => item.id === itemToRemove.id
@@ -41,6 +46,13 @@ export const grocerySlice = createSlice({
       } else {
         existingItem.quantity = existingItem.quantity - itemToRemove.quantity;
       }
+    },
+    markItemPurchased: (state, action) => {
+      const purchasedItem = action.payload;
+      const listItem = state.items.find((item) => item.id === purchasedItem.id);
+      state.changed = true;
+      listItem.isPurchased = true;
+      listItem.quantity = 0;
     },
   },
 });
