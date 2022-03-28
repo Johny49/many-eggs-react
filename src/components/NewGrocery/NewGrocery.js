@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { groceryActions } from "../../store/grocery-slice";
+import Button from "../UI/Button/Button";
 import classes from "./NewGrocery.module.css";
 
 const NewGrocery = () => {
@@ -52,11 +53,11 @@ const NewGrocery = () => {
 
   return (
     <div className={classes["new-grocery"]}>
-      {!isEditing && <button onClick={startEditingHandler}>Add Grocery</button>}
+      {!isEditing && <Button onClick={startEditingHandler}>Add Grocery</Button>}
       {isEditing && (
         <form onSubmit={submitHandler}>
-          <div className={classes["new-expense__controls"]}>
-            <div className={classes["new-expense__control"]}>
+          <div className={classes["new-grocery__controls"]}>
+            <div className={classes["new-grocery__control"]}>
               <label>Title</label>
               <input
                 type="text"
@@ -64,7 +65,7 @@ const NewGrocery = () => {
                 onChange={titleChangeHandler}
               />
             </div>
-            <div className={classes["new-expense__control"]}>
+            <div className={classes["new-grocery__control"]}>
               <label>Amount</label>
               <input
                 type="number"
@@ -76,11 +77,9 @@ const NewGrocery = () => {
               />
             </div>
           </div>
-          <div className={classes["new-expense__actions"]}>
-            <button type="button" onClick={stopEditingHandler}>
-              Cancel
-            </button>
-            <button type="submit">Add Grocery</button>
+          <div className={classes["new-grocery__actions"]}>
+            <Button onClick={stopEditingHandler}>Cancel</Button>
+            <Button type="submit">Add Grocery</Button>
           </div>
         </form>
       )}
