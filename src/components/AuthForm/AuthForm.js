@@ -11,6 +11,7 @@ import { login, selectUser } from "../../store/user-slice";
 
 import Button from "../UI/Button/Button";
 import Card from "../UI/Card/Card";
+import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
   const nameInputRef = useRef();
@@ -89,11 +90,11 @@ const AuthForm = () => {
   }
 
   return (
-    <Card>
+    <div className={classes.auth}>
       <h2>{isLogin ? "Login" : "Sign Up"}</h2>
-      <form onSubmit={submitHandler}>
+      <form id="login" onSubmit={submitHandler}>
         {!isLogin && (
-          <div className="mb-3">
+          <div className={classes.control}>
             <label htmlFor="name">Name</label>
             <input
               type="text"
@@ -101,11 +102,12 @@ const AuthForm = () => {
               placeholder="Display Name"
               ref={nameInputRef}
               required
+              autoComplete="username"
             />
           </div>
         )}
 
-        <div className="mb-3">
+        <div className={classes.control}>
           <label htmlFor="email">Email address</label>
           <input
             type="email"
@@ -113,9 +115,10 @@ const AuthForm = () => {
             placeholder="Enter email"
             ref={emailInputRef}
             required
+            autoComplete="email"
           />
         </div>
-        <div className="mb-3">
+        <div className={classes.control}>
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -124,21 +127,26 @@ const AuthForm = () => {
             placeholder="Password"
             minLength={7}
             required
+            autoComplete={isLogin ? "current-password" : "new-password"}
           />
         </div>
-        <div>
+        <div className={classes.actions}>
           {!isLoading && (
             <Button type="submit">
               {isLogin ? "Login" : "Create Account"}
             </Button>
           )}
           {isLoading && <p>Sending authentication request ...</p>}
-          <Button type="button" onClick={switchAuthModeHandler}>
+          <Button
+            type="button"
+            className={classes.toggle}
+            onClick={switchAuthModeHandler}
+          >
             {isLogin ? "Create New Account" : "Log In With Existing Account"}
           </Button>
         </div>
       </form>
-    </Card>
+    </div>
   );
 };
 
