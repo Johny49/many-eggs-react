@@ -8,7 +8,11 @@ export const grocerySlice = createSlice({
   },
   reducers: {
     replaceGroceryList(state, action) {
-      state.items = action.payload.groceryItems;
+      if (action.payload !== null) {
+        state.items = action.payload.groceryItems;
+      } else {
+        state.items = [];
+      }
       state.changed = false;
     },
     addItemToList: (state, action) => {
