@@ -15,3 +15,9 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.26);
   border-radius: 20px;
 }
+
+.nav button:hover,
+.nav button:active {
+  background-color: #3f3f3f;
+  color: white;
+}

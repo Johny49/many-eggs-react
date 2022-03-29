@@ -43,20 +43,20 @@ const GroceryItem = (props) => {
             +
           </Button>
           <h2>{props.title}</h2>
-          <div>
-            <Button
-              className={classes["button-action"]}
-              onClick={markItemPurchasedHandler}
-            >
-              Purchased
-            </Button>
-            <Button
-              className={classes["button-action"]}
-              onClick={deleteItemHandler}
-            >
-              Delete
-            </Button>
-          </div>
+        </div>
+        <div className={classes.actions}>
+          <Button
+            className={classes["button-purchased"]}
+            onClick={markItemPurchasedHandler}
+          >
+            Purchased
+          </Button>
+          <Button
+            className={classes["button-delete"]}
+            onClick={deleteItemHandler}
+          >
+            Delete
+          </Button>
         </div>
       </Card>
     </li>

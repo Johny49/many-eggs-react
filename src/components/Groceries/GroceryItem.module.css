@@ -1,26 +1,27 @@
 .grocery-item {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   padding: 0.5rem;
   margin: 1rem 0;
-  background-color: white;
 }
 
 .grocery-item__description {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  flex-wrap: nowrap;
+  flex: 100%;
+  gap: 0.4rem;
   align-items: center;
-  flex-flow: column-reverse;
   justify-content: flex-start;
-  flex: 1;
 }
 
 .grocery-item h2 {
   color: #3a3a3a;
-  font-size: 1rem;
+  font-size: 1.25rem;
   flex: 1;
   margin: 0 1rem;
   color: darkviolet;
@@ -29,24 +30,19 @@
 .grocery-item__qty {
   font-size: 1rem;
   font-weight: bold;
-  color: darkviolet;
-  background-color: white;
-  border: 1px solid darkviolet;
+  color: white;
+  background-color: #3f3f3f;
+  border: 1px solid #3f3f3f;
   padding: 0.5rem;
   border-radius: 12px;
 }
 
 .button-qty {
   font-weight: bold;
-  font-size: 1.2rem;
-  background-color: darkviolet;
-  border: 1px solid darkviolet;
-  border-radius: 50%;
+  border-radius: 100%;
   min-width: 36px;
   margin-left: 0.5rem;
-  padding: 0.5rem 0.7rem;
-  color: white;
-  cursor: pointer;
+  padding: 0.5rem;
 }
 
 .button-qty:hover,
@@ -55,7 +51,13 @@
   color: darkviolet;
 }
 
-.button-action {
+.actions {
+  display: flex;
+  margin: 0.5rem 0;
+}
+
+.button-purchased,
+.button-delete {
   background-color: transparent;
   border: 1px solid #3f3f3f;
   border-radius: 30px;
@@ -65,21 +67,34 @@
   cursor: pointer;
 }
 
-.button-action:hover,
-.button-action:active {
-  background-color: #4b4b4b;
+.button-purchased:hover,
+.button-purchased:active {
+  background-color: green;
+  color: white;
+}
+
+.button-delete:hover,
+.button-delete:active {
+  background-color: red;
   color: white;
 }
 
 @media (min-width: 580px) {
   .grocery-item__description {
     flex-direction: row;
+    gap: 0.8rem;
     align-items: center;
     justify-content: flex-start;
     flex: 1;
   }
 
-  .grocery-item__description h2 {
+  .actions {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .button-purchased,
+  .button-delete {
     font-size: 1.25rem;
   }
 
