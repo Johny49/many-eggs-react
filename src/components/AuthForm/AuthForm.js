@@ -8,9 +8,9 @@ import {
   updateProfile,
 } from "../../config/firebase-config";
 import { login, selectUser } from "../../store/user-slice";
-
+// component
 import Button from "../UI/Button/Button";
-import Card from "../UI/Card/Card";
+// css
 import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
@@ -32,8 +32,8 @@ const AuthForm = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const enteredEmail = emailInputRef.current.value;
-    const enteredPassword = passwordInputref.current.value;
+    const enteredEmail = emailInputRef.current.value.trim();
+    const enteredPassword = passwordInputref.current.value.trim();
 
     // TODO: Add validation here
 
@@ -74,8 +74,7 @@ const AuthForm = () => {
               })
             )
           );
-          // Signed in
-          const user = userAuth.user;
+          // signed in, finished loading
           setIsLoading(false);
         })
         .catch((error) => {
