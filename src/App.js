@@ -21,7 +21,7 @@ import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
 import ProfilePage from "./pages/ProfilePage";
 import Footer from "./components/Footer/Footer";
-
+// css
 import classes from "./App.module.css";
 
 // track inital load of app

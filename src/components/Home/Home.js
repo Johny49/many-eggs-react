@@ -1,10 +1,12 @@
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { selectUser } from "../../store/user-slice";
+// components
+import Groceries from "../Groceries/Groceries";
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
+// css
 import classes from "./Home.module.css";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../store/user-slice";
-import { Link } from "react-router-dom";
-import Groceries from "../Groceries/Groceries";
 
 const Home = () => {
   const user = useSelector(selectUser);
