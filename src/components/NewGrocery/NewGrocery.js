@@ -46,7 +46,7 @@ const NewGrocery = () => {
 
     const groceryItem = {
       id: uuidv4(),
-      title: enteredTitle,
+      title: enteredTitle.toLowerCase(),
       quantity: +enteredQty,
       isPurchased: false,
     };
