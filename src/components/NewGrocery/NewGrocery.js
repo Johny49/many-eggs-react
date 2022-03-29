@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { groceryActions } from "../../store/grocery-slice";
+import validateString from "../../utils/validateString";
 import Button from "../UI/Button/Button";
 import classes from "./NewGrocery.module.css";
 
@@ -36,6 +37,12 @@ const NewGrocery = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
+    // ensure title is not blank before saving
+    if (!validateString(enteredTitle)) {
+      alert("Title cannot be blank");
+      return;
+    }
 
     const groceryItem = {
       id: uuidv4(),
