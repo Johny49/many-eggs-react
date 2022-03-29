@@ -34,7 +34,7 @@ function App() {
 
   useEffect(() => {
     const fetchGroceries = (userId) => {
-      const groceryListRef = ref(db, `lists/${userId}-list`);
+      const groceryListRef = ref(db, `lists/${userId}`);
       onValue(groceryListRef, (snapshot) => {
         const groceryData = snapshot.val();
         dispatch(groceryActions.replaceGroceryList(groceryData));
@@ -68,7 +68,7 @@ function App() {
     }
     // update list in db when changed; skip on initial load
     if (groceriesChanged) {
-      set(ref(db, "lists/" + auth.currentUser.uid + "-list"), {
+      set(ref(db, "lists/" + auth.currentUser.uid), {
         groceryItems,
       })
         .then(() => {
