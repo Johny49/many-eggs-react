@@ -28,13 +28,13 @@ const Home = () => {
     <section>
       <Card className={classes.home}>
         <h2>Sign Up</h2>
-        <Link to={{ pathname: "/auth", state: { isLogin: false } }}>
+        <Link to="/auth">
           <Button>Register with Email and Password</Button>
         </Link>
       </Card>
       <div>
         <h3>Already have an account?</h3>
-        <Link to={{ pathname: "/auth", state: { isLogin: true } }}>
+        <Link to="/auth">
           <Button>Log In</Button>
         </Link>
       </div>

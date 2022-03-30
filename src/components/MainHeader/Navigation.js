@@ -19,11 +19,6 @@ const Navigation = (props) => {
 
   return (
     <nav className={classes.nav}>
-      {!user && (
-        <Link to="/auth">
-          <button type="button">Sign Up</button>
-        </Link>
-      )}
       {user && location.pathname !== "/profile" && (
         <Link to="/profile">
           <button type="button">Profile</button>
