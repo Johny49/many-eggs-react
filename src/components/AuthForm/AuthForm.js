@@ -98,20 +98,20 @@ const AuthForm = () => {
               placeholder="Display Name"
               ref={nameInputRef}
               required
-              autoComplete="username"
+              autoComplete="nickname"
             />
           </div>
         )}
 
         <div className={classes.control}>
-          <label htmlFor="email">Email address</label>
+          <label htmlFor="email">Email Address</label>
           <input
             type="email"
             id="email"
             placeholder="Enter email"
             ref={emailInputRef}
             required
-            autoComplete="email"
+            autoComplete="username"
           />
         </div>
         <div className={classes.control}>
