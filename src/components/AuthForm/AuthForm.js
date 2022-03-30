@@ -21,7 +21,7 @@ const AuthForm = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
-  const [isLogin, setIsLogIn] = useState(true);
+  const [isLogin, setIsLogIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   // toggle login or signup
@@ -35,16 +35,13 @@ const AuthForm = () => {
     const enteredEmail = emailInputRef.current.value.trim();
     const enteredPassword = passwordInputref.current.value.trim();
 
-    // TODO: Add validation here
-
     setIsLoading(true);
 
     if (isLogin) {
       // handle user login
       signInWithEmailAndPassword(auth, enteredEmail, enteredPassword)
         .then((userAuth) => {
-          // Signed in
-          const user = userAuth.user;
+          // Signed in, finished loading
           setIsLoading(false);
         })
         .catch((error) => {
