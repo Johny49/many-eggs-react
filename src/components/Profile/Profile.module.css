@@ -1,0 +1,34 @@
+.profile,
+.update-pw {
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 50rem;
+  max-width: 90%;
+}
+
+.update-pw__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.update-pw__control label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.update-pw__control input {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 95%;
+}
+
+.update-pw__actions {
+  text-align: right;
+}

@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../store/user-slice";
+import Profile from "../components/Profile/Profile";
 
 const ProfilePage = () => {
   const user = useSelector(selectUser);
@@ -9,7 +10,7 @@ const ProfilePage = () => {
     return <Navigate replace to="/" />;
   }
 
-  return <h2>This is the profile page ... </h2>;
+  return <Profile />;
 };
 
 export default ProfilePage;
