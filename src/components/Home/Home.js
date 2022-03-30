@@ -33,7 +33,7 @@ const Home = () => {
         </Link>
       </Card>
       <div>
-        <h3>Already have an account?</h3>
+        <h3 className={classes.login}>Already have an account?</h3>
         <Link to="/auth">
           <Button>Log In</Button>
         </Link>
