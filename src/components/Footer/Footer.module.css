@@ -5,8 +5,8 @@
   bottom: 0;
   height: 2.8rem;
   font-size: 0.9rem;
-  background-color: darkviolet;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 @media (min-width: 580px) {

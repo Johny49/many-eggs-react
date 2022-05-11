@@ -49,7 +49,7 @@ const GroceryItem = (props) => {
             className={classes["button-purchased"]}
             onClick={markItemPurchasedHandler}
           >
-            Purchased
+            Purchase
           </Button>
           <Button
             className={classes["button-delete"]}

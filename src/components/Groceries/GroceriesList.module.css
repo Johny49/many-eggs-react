@@ -4,6 +4,6 @@
 }
 
 .groceries-list__fallback {
-  color: darkviolet;
+  color: var(--color-primary);
   text-align: center;
 }

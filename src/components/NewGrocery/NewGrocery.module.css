@@ -1,5 +1,5 @@
 .new-grocery {
-  background-color: #a892ee;
+  background-color: var(--color-tertiary);
   padding: 1rem;
   margin: 2rem auto;
   width: 50rem;
@@ -13,17 +13,18 @@
   font: inherit;
   cursor: pointer;
   padding: 1rem 2rem;
-  border: 1px solid #40005d;
-  background-color: #40005d;
-  color: white;
+  border: 1px solid var(--color-secondary);
+  background-color: var(--color-secondary);
+  color: var(--color-tertiary);
   border-radius: 12px;
   margin: 1rem;
 }
 
 .new-grocery button:hover,
 .new-grocery button:active {
-  background-color: #510674;
-  border-color: #510674;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 .new-grocery button.alternative {
@@ -47,15 +48,17 @@
 
 .new-grocery__control label {
   font-weight: bold;
+  color: var(--color-secondary);
   margin-bottom: 0.5rem;
   display: block;
 }
 
 .new-grocery__control input {
   font: inherit;
+  color: var(--color-primary);
   padding: 0.5rem;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-secondary);
   width: 20rem;
   max-width: 95%;
 }

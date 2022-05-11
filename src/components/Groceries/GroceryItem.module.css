@@ -20,35 +20,35 @@
 }
 
 .grocery-item h2 {
-  color: #3a3a3a;
-  font-size: 1.25rem;
+  color: var(--color-tertiary);
+  font-size: 2rem;
   flex: 1;
   margin: 0 1rem;
-  color: darkviolet;
 }
 
 .grocery-item__qty {
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: bold;
-  color: white;
-  background-color: #3f3f3f;
-  border: 1px solid #3f3f3f;
-  padding: 0.5rem;
+  color: var(--color-secondary);
+  background-color: var(--color-tertiary);
+  padding: 0.75rem;
   border-radius: 12px;
 }
 
 .button-qty {
+  font-size: x-large;
   font-weight: bold;
-  border-radius: 100%;
+  border: none;
   min-width: 36px;
-  margin-left: 0.5rem;
   padding: 0.5rem;
+  background-color: transparent;
+  color: var(--color-tertiary);
 }
 
 .button-qty:hover,
 .button-qty:active {
-  background-color: white;
-  color: darkviolet;
+  background-color: var(--color-secondary);
+  color: var(--color-tertiary);
 }
 
 .actions {
@@ -59,11 +59,11 @@
 .button-purchased,
 .button-delete {
   background-color: transparent;
-  border: 1px solid #3f3f3f;
+  border: 1px solid var(--color-tertiary);
   border-radius: 30px;
   margin: 0 0.5rem;
   padding: 0.15rem 1rem;
-  color: #3f3f3f;
+  color: var(--color-tertiary);
   cursor: pointer;
 }
 
@@ -95,11 +95,11 @@
 
   .button-purchased,
   .button-delete {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
   .grocery-item__qty {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     padding: 0.5rem 1.5rem;
   }
 }

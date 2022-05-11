@@ -1,6 +1,6 @@
 .welcome,
 .login {
-  color: white;
+  color: var(--color-secondary);
 }
 
 .home {
