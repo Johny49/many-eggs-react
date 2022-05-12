@@ -54,6 +54,13 @@ export const grocerySlice = createSlice({
       listItem.isPurchased = true;
       listItem.quantity = 0;
     },
+    buyItemAgain: (state, action) => {
+      const buyAgainItem = action.payload;
+      const listItem = state.items.find((item) => item.id === buyAgainItem.id);
+      state.change = true;
+      listItem.isPurchased = false;
+      listItem.quantity = 1;
+    },
   },
 });
 
