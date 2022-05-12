@@ -1,16 +1,22 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { groceryActions } from "../../store/grocery-slice";
+import { groceryActions, selectGroceryItems } from "../../store/grocery-slice";
 import validateString from "../../utils/validateString";
+import BuyAgainList from "./BuyAgainList";
 import Button from "../UI/Button/Button";
 import classes from "./NewGrocery.module.css";
 
 const NewGrocery = () => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredQty, setEnteredQty] = useState("");
+  // control display of new Grocery Item Form
   const [isEditing, setIsEditing] = useState(false);
+  // control display of Previous Purchases
   const [showBuyAgain, setShowBuyAgain] = useState(false);
+  const prevPurchasedItems = useSelector(selectGroceryItems).filter(
+    (item) => item.isPurchased
+  );
 
   const dispatch = useDispatch();
 
@@ -23,8 +29,11 @@ const NewGrocery = () => {
   };
 
   const buyAgainHandler = () => {
-    // TODO: display/hide list of prev. purchased items
-    setShowBuyAgain((prevState) => !prevState);
+    setShowBuyAgain(true);
+  };
+
+  const closeBuyAgainHandler = () => {
+    setShowBuyAgain(false);
   };
 
   const titleChangeHandler = (e) => {
@@ -60,7 +69,13 @@ const NewGrocery = () => {
 
   return (
     <div className={classes["new-grocery"]}>
-      {!isEditing && <Button onClick={startEditingHandler}>Add Grocery</Button>}
+      {!isEditing && !showBuyAgain && (
+        <Button onClick={startEditingHandler}>Add Grocery</Button>
+      )}
+      {!showBuyAgain && !isEditing && (
+        <Button onClick={buyAgainHandler}>Buy Again</Button>
+      )}
+      {/* Add New Grocery Item */}
       {isEditing && (
         <form onSubmit={submitHandler}>
           <div className={classes["new-grocery__controls"]}>
@@ -89,6 +104,14 @@ const NewGrocery = () => {
             <Button type="submit">Add Grocery</Button>
           </div>
         </form>
+      )}
+      {/* Display List of Previous Purchases */}
+      {showBuyAgain && (
+        <>
+          <BuyAgainList items={prevPurchasedItems} />
+          <hr className={classes.separator} />
+          <Button onClick={closeBuyAgainHandler}>Close</Button>
+        </>
       )}
     </div>
   );

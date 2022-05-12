@@ -1,0 +1,10 @@
+h2 {
+  color: var(--color-secondary);
+}
+
+.purchased-list {
+  list-style: none;
+  padding: 0;
+  color: var(--color-secondary);
+  font-size: 1.5rem;
+}

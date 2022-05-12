@@ -66,3 +66,9 @@
 .new-grocery__actions {
   text-align: right;
 }
+
+.separator {
+  height: 2px;
+  background-color: var(--color-secondary);
+  border: none;
+}
