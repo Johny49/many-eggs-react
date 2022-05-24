@@ -61,6 +61,20 @@ export const grocerySlice = createSlice({
       listItem.isPurchased = false;
       listItem.quantity = 1;
     },
+    reorderList: (state, action) => {
+      const sourceIndex = state.items
+        .map((item) => item.id)
+        .indexOf(action.payload.sourceId);
+      const destinationIndex = state.items
+        .map((item) => item.id)
+        .indexOf(action.payload.destinationId);
+      state.changed = true;
+      const tempItems = Array.from(state.items);
+      const [reorderedItems] = tempItems.splice(sourceIndex, 1);
+
+      tempItems.splice(destinationIndex, 0, reorderedItems);
+      state.items = tempItems;
+    },
   },
 });
 

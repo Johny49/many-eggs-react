@@ -1,3 +1,4 @@
+import { Draggable } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
 import { groceryActions } from "../../store/grocery-slice";
 import Button from "../UI/Button/Button";
@@ -29,37 +30,50 @@ const GroceryItem = (props) => {
   };
 
   return (
-    <li>
-      <Card className={classes["grocery-item"]}>
-        <div className={classes["grocery-item__description"]}>
-          <Button
-            className={classes["button-qty"]}
-            onClick={subtractItemHandler}
-          >
-            -
-          </Button>
-          <div className={classes["grocery-item__qty"]}>{props.quantity}</div>
-          <Button className={classes["button-qty"]} onClick={addItemHandler}>
-            +
-          </Button>
-          <h2>{props.title}</h2>
-        </div>
-        <div className={classes.actions}>
-          <Button
-            className={classes["button-purchased"]}
-            onClick={markItemPurchasedHandler}
-          >
-            Purchase
-          </Button>
-          <Button
-            className={classes["button-delete"]}
-            onClick={deleteItemHandler}
-          >
-            Delete
-          </Button>
-        </div>
-      </Card>
-    </li>
+    <Draggable draggableId={props.id} index={props.index} key={props.id}>
+      {(provided, snapshot) => (
+        <li
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+        >
+          <Card className={classes["grocery-item"]}>
+            <div className={classes["grocery-item__description"]}>
+              <Button
+                className={classes["button-qty"]}
+                onClick={subtractItemHandler}
+              >
+                -
+              </Button>
+              <div className={classes["grocery-item__qty"]}>
+                {props.quantity}
+              </div>
+              <Button
+                className={classes["button-qty"]}
+                onClick={addItemHandler}
+              >
+                +
+              </Button>
+              <h2>{props.title}</h2>
+            </div>
+            <div className={classes.actions}>
+              <Button
+                className={classes["button-purchased"]}
+                onClick={markItemPurchasedHandler}
+              >
+                Purchase
+              </Button>
+              <Button
+                className={classes["button-delete"]}
+                onClick={deleteItemHandler}
+              >
+                Delete
+              </Button>
+            </div>
+          </Card>
+        </li>
+      )}
+    </Draggable>
   );
 };
 
