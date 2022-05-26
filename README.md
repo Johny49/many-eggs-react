@@ -48,6 +48,7 @@ Created by [@johny49](https://github.com/Johny49/) - feel free to contact me!
 - React
 - Redux
 - Firebase (Authentication and Realtime Database)
+- React-Beautiful-DND
 - JavaScript
 
 ## Project Status
