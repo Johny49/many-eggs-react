@@ -9,7 +9,7 @@ import classes from "./NewGrocery.module.css";
 
 const NewGrocery = () => {
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredQty, setEnteredQty] = useState("");
+  const [enteredQty, setEnteredQty] = useState("1");
   // control display of new Grocery Item Form
   const [isEditing, setIsEditing] = useState(false);
   // control display of Previous Purchases
