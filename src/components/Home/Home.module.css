@@ -3,6 +3,10 @@
   color: var(--color-secondary);
 }
 
+.signup-Header {
+  color: var(--color-primary);
+}
+
 .home {
   width: 85%;
   max-width: 40rem;

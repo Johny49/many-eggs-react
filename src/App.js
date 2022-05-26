@@ -86,7 +86,8 @@ function App() {
       <main className={classes["content-container"]}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/login" element={<AuthPage />} />
+          <Route path="/signup" element={<AuthPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>

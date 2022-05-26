@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   auth,
@@ -13,7 +13,7 @@ import Button from "../UI/Button/Button";
 // css
 import classes from "./AuthForm.module.css";
 
-const AuthForm = () => {
+const AuthForm = (props) => {
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputref = useRef();
@@ -21,7 +21,7 @@ const AuthForm = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
-  const [isLogin, setIsLogIn] = useState(false);
+  const [isLogin, setIsLogIn] = useState(props.isLogin || false);
   const [isLoading, setIsLoading] = useState(false);
 
   // toggle login or signup
@@ -133,13 +133,15 @@ const AuthForm = () => {
             </Button>
           )}
           {isLoading && <p>Sending authentication request ...</p>}
-          <Button
-            type="button"
-            className={classes.toggle}
-            onClick={switchAuthModeHandler}
-          >
-            {isLogin ? "Create New Account" : "Log In With Existing Account"}
-          </Button>
+          <Link to={{ pathname: isLogin ? "/signup" : "/login" }}>
+            <Button
+              type="button"
+              className={classes.toggle}
+              onClick={switchAuthModeHandler}
+            >
+              {isLogin ? "Create New Account" : "Log In With Existing Account"}
+            </Button>
+          </Link>
         </div>
       </form>
     </div>
