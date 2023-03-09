@@ -1,7 +1,7 @@
 .new-grocery {
   background-color: var(--color-tertiary);
-  padding: 1rem;
-  margin: 2rem auto;
+  padding: 0.5rem;
+  margin: 1rem auto;
   width: 50rem;
   max-width: 95%;
   border-radius: 12px;
@@ -18,7 +18,7 @@
 .new-grocery button {
   font: inherit;
   cursor: pointer;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   border: 1px solid var(--color-secondary);
   background-color: var(--color-secondary);
   color: var(--color-tertiary);
@@ -77,4 +77,15 @@
   height: 2px;
   background-color: var(--color-secondary);
   border: none;
+}
+
+@media (min-width: 580px) {
+  .new-grocery {
+    padding: 1rem;
+    margin: 2rem auto;
+  }
+
+  .new-grocery button {
+    padding: 0.8rem 1.6rem;
+  }
 }
