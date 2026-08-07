@@ -115,7 +115,9 @@ const NewGrocery = () => {
       {/* Display List of Previous Purchases */}
       {showBuyAgain && (
         <>
-          <BuyAgainList items={prevPurchasedItems} />
+          <div className={classes["buy-again-scroll-box"]}>
+            <BuyAgainList items={prevPurchasedItems} />
+          </div>
           <hr className={classes.separator} />
           <Button onClick={closeBuyAgainHandler}>Close</Button>
         </>
