@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { groceryActions, selectGroceryItems } from "../../store/grocery-slice";
+import { groceryActions } from "../../store/grocery-slice";
 import Button from "../UI/Button/Button";
 import classes from "./BuyAgainList.module.css";
 
@@ -11,7 +11,6 @@ const BuyAgainList = (props) => {
   }
 
   const addToListHandler = (buyAgainItem) => {
-    console.log(buyAgainItem);
     // dispatch to store, set .isPurchased to false, .quantity to 1
     dispatch(groceryActions.buyItemAgain(buyAgainItem));
   };

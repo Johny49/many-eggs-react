@@ -33,16 +33,18 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    let unsubscribeGroceries;
+
     const fetchGroceries = (userId) => {
       const groceryListRef = ref(db, `lists/${userId}`);
-      onValue(groceryListRef, (snapshot) => {
+      unsubscribeGroceries = onValue(groceryListRef, (snapshot) => {
         const groceryData = snapshot.val();
         dispatch(groceryActions.replaceGroceryList(groceryData));
       });
     };
 
     // check if user is already authenticated
-    onAuthStateChanged(auth, (userAuth) => {
+    const unsubscribeAuth = onAuthStateChanged(auth, (userAuth) => {
       if (userAuth) {
         // user logged in, store current user in state
         dispatch(
@@ -58,6 +60,13 @@ function App() {
         dispatch(logout());
       }
     });
+
+    return () => {
+      if (unsubscribeGroceries) {
+        unsubscribeGroceries();
+      }
+      unsubscribeAuth();
+    };
   }, [dispatch]);
 
   useEffect(() => {
@@ -67,7 +76,7 @@ function App() {
       return;
     }
     // update list in db when changed; skip on initial load
-    if (groceriesChanged) {
+    if (groceriesChanged && auth.currentUser) {
       set(ref(db, "lists/" + auth.currentUser.uid), {
         groceryItems,
       })

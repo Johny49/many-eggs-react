@@ -1,4 +1,4 @@
-import { Draggable } from "react-beautiful-dnd";
+import { Draggable } from "@hello-pangea/dnd";
 import { useDispatch } from "react-redux";
 import { groceryActions } from "../../store/grocery-slice";
 import Button from "../UI/Button/Button";

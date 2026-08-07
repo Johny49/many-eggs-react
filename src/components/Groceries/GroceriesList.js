@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 import GroceryItem from "./GroceryItem";
 import classes from "./GroceriesList.module.css";
 

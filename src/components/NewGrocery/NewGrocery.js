@@ -1,11 +1,18 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
 import { groceryActions, selectGroceryItems } from "../../store/grocery-slice";
 import validateString from "../../utils/validateString";
 import BuyAgainList from "./BuyAgainList";
 import Button from "../UI/Button/Button";
 import classes from "./NewGrocery.module.css";
+
+const createGroceryId = () => {
+  if (window.crypto && window.crypto.randomUUID) {
+    return window.crypto.randomUUID();
+  }
+
+  return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+};
 
 const NewGrocery = () => {
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -54,7 +61,7 @@ const NewGrocery = () => {
     }
 
     const groceryItem = {
-      id: uuidv4(),
+      id: createGroceryId(),
       title: enteredTitle.toLowerCase(),
       quantity: +enteredQty,
       isPurchased: false,

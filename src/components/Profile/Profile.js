@@ -1,8 +1,8 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../store/user-slice";
 // components
-import Button from "../UI/Button/Button";
+// import Button from "../UI/Button/Button";
 import Card from "../UI/Card/Card";
 // css
 import classes from "./Profile.module.css";
