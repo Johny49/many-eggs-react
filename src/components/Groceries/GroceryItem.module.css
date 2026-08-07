@@ -36,10 +36,10 @@
 }
 
 .button-qty {
-  font-size: x-large;
+  font-size: 1.5rem;
   font-weight: bold;
   border: none;
-  min-width: 36px;
+  min-width: 2.25rem;
   padding: 0.5rem;
   background-color: transparent;
   color: var(--color-tertiary);

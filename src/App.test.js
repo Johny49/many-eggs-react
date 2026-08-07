@@ -1,8 +1,21 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import App from "./App";
+import store from "./store";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders the app header", () => {
+  render(
+    <Provider store={store}>
+      <BrowserRouter
+        future={{ v7_relativeSplatPath: true, v7_startTransition: true }}
+      >
+        <App />
+      </BrowserRouter>
+    </Provider>
+  );
+
+  expect(
+    screen.getByRole("heading", { name: /many eggs, one basket/i })
+  ).toBeInTheDocument();
 });
